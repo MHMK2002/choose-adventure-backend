@@ -1,0 +1,102 @@
+[build-system]
+requires = [
+    "setuptools>=61.2.0",
+]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "choose-adventure"
+version = "0.1.0"
+description = "A story adventure generator"
+readme = "README.md"
+requires-python = ">=3.12"
+dependencies = [
+    "fastapi[all]",
+    "uvicorn[standard]",
+    "python-dotenv",
+    "pydantic",
+    "sqlalchemy",
+    "psycopg[binary]",
+    "pydantic-settings",
+    "python-multipart",
+    "langchain",
+    "langchain_deepseek",
+    "ruff",
+    "pip-tools",
+    "pytest",
+    "pytest-asyncio",
+    "httpx",
+]
+
+[tool.setuptools]
+include-package-data = true
+
+[tool.setuptools.packages]
+find = { namespaces = false }
+
+[tool.setuptools_scm]
+version_file = "__tmp_version.py"
+
+[tool.pip-tools]
+generate-hashes = false
+verbose = true
+
+[tool.pip-tools.compile]
+no-emit-index-url = true
+no-emit-trusted-host = true
+
+
+[tool.ruff]
+target-version = "py312"
+line-length = 120
+indent-width = 4
+
+exclude = [
+    ".eggs",
+    ".git",
+    ".venv",
+    "build",
+    "dist",
+]
+
+[tool.ruff.lint]
+select = [
+    "I",   # isort
+    "S",   # bandit
+    "F",   # Pyflakes
+    "E",   # pycodestyle
+    "B",   # flake8-bugbear
+    "UP",  # pyupgrade
+    "SIM", # flake8-simplify
+    "DJ",  # flake8-django
+    "C90", # mccabe
+    "C4",  # flake8-comprehensions
+    "PIE", # flake8-pie
+    "PTH", # flake8-use-pathlib
+]
+
+ignore = [
+    "F405",
+    "B904",
+    "ANN002",
+    "ANN003",
+    "B008",
+]
+
+[tool.ruff.lint.isort]
+case-sensitive = true
+combine-as-imports = true
+no-lines-before = ["local-folder"]
+relative-imports-order = "closest-to-furthest"
+
+[tool.ruff.lint.flake8-bandit]
+
+[tool.ruff.lint.pyupgrade]
+keep-runtime-typing = true
+
+[tool.ruff.format]
+quote-style = "single"
+
+[tool.pytest.ini_options]
+asyncio_mode = "auto"
+testpaths = ["tests"]

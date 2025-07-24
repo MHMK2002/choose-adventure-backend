@@ -1,0 +1,31 @@
+# Virtual environment
+.venv/
+env/
+venv/
+
+# Byte-compiled / optimized / compiled files
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Editor-specific files
+.idea/*
+.vscode/
+*.sublime-project
+*.sublime-workspace
+
+# Logs and databases
+*.log
+*.db
+*.sqlite
+data/  # if you store local data files here
+
+# Dependency management
+Pipfile.lock  # if using Pipenv and not tracking the lock file
+poetry.lock   # if using Poetry and not tracking the lock file
+
+# Environment variables
+.env
+.env.*
+/choose_adventure.egg-info/
